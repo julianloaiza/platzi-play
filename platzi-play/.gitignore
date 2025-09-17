@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+platzi-play/gradle/wrapper/gradle-wrapper.jar:Zone.Identifier
+platzi-play/gradlew.bat:Zone.Identifier
