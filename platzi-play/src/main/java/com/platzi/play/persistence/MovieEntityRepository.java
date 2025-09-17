@@ -1,12 +1,14 @@
 package com.platzi.play.persistence;
 
 import com.platzi.play.domain.dto.MovieDto;
+import com.platzi.play.domain.dto.UpdateMovieDto;
 import com.platzi.play.domain.repository.MovieRepository;
 import com.platzi.play.persistence.crud.CrudMovieEntity;
 import com.platzi.play.persistence.entity.MovieEntity;
 import com.platzi.play.persistence.mapper.MovieMapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -33,6 +35,18 @@ public class MovieEntityRepository implements MovieRepository {
     @Override
     public MovieDto save(MovieDto movieDto) {
         MovieEntity movieEntity = movieMapper.toEntity(movieDto);
+        return this.movieMapper.toDto(crudMovieEntity.save(movieEntity));
+    }
+
+    @Override
+    public MovieDto update(long id, UpdateMovieDto updateMovieDto) {
+        MovieEntity movieEntity = crudMovieEntity.findById(id).orElse(null);
+        if (movieEntity == null) return null;
+
+        movieEntity.setTitulo(updateMovieDto.title());
+        movieEntity.setFechaEstreno(updateMovieDto.releaseDate());
+        movieEntity.setClasificacion(BigDecimal.valueOf(updateMovieDto.rating()));
+
         return this.movieMapper.toDto(crudMovieEntity.save(movieEntity));
     }
 }
