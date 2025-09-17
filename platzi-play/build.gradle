@@ -44,6 +44,9 @@ dependencies {
 
     // Validaciones de entrada
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Doc openapi
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
 }
 
 
