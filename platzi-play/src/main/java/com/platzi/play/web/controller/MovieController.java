@@ -2,11 +2,9 @@ package com.platzi.play.web.controller;
 
 import com.platzi.play.domain.dto.MovieDto;
 import com.platzi.play.domain.service.MovieService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +29,10 @@ public class MovieController {
         MovieDto movieDto = this.movieService.getById(id);
         if (movieDto == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(movieDto);
+    }
+
+    @PostMapping
+    public ResponseEntity<MovieDto> add(@RequestBody MovieDto movieDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.movieService.add(movieDto));
     }
 }
