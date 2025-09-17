@@ -26,7 +26,7 @@ dependencies {
 
     // Lombok
     compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'                // <— te faltaba
+    annotationProcessor 'org.projectlombok:lombok'
     // (opcional, recomendado si usas @Accessors/@Builder de Lombok con MapStruct)
     annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
@@ -41,6 +41,9 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+    // Validaciones de entrada
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 

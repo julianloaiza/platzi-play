@@ -3,6 +3,7 @@ package com.platzi.play.web.controller;
 import com.platzi.play.domain.dto.MovieDto;
 import com.platzi.play.domain.dto.UpdateMovieDto;
 import com.platzi.play.domain.service.MovieService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +34,12 @@ public class MovieController {
     }
 
     @PostMapping
-    public ResponseEntity<MovieDto> add(@RequestBody MovieDto movieDto) {
+    public ResponseEntity<MovieDto> add(@RequestBody @Valid MovieDto movieDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.movieService.add(movieDto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MovieDto> update(@PathVariable long id, @RequestBody UpdateMovieDto updateMovieDto) {
+    public ResponseEntity<MovieDto> update(@PathVariable long id, @RequestBody @Valid UpdateMovieDto updateMovieDto) {
         MovieDto updatedMovie = this.movieService.update(id, updateMovieDto);
         if (updatedMovie == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(updatedMovie);
