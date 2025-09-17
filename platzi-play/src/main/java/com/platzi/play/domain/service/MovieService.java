@@ -31,4 +31,8 @@ public class MovieService {
         return movieRepository.update(id, updateMovieDto);
     }
 
+    public boolean deleteById(long id) {
+        return movieRepository.deleteById(id);
+    }
+
 }
