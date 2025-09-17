@@ -35,5 +35,5 @@ public class MovieEntity {
     private BigDecimal clasificacion;
 
     @Column(nullable = false, length = 1)
-    private String estado;
+    private char estado;
 }
